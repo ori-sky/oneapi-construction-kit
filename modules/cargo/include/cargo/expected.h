@@ -295,7 +295,7 @@ class expected
   template <
       class... Args,
       enable_if_t<std::is_constructible<T, Args &&...>::value> * = nullptr>
-  constexpr expected(in_place_t, Args &&... args)
+  constexpr expected(in_place_t, Args &&...args)
       : impl_base(in_place, std::forward<Args>(args)...),
         ctor_base(detail::default_constructor_tag{}) {}
 
@@ -308,7 +308,7 @@ class expected
   template <class U, class... Args,
             enable_if_t<std::is_constructible<T, std::initializer_list<U> &,
                                               Args &&...>::value> * = nullptr>
-  constexpr expected(in_place_t, std::initializer_list<U> il, Args &&... args)
+  constexpr expected(in_place_t, std::initializer_list<U> il, Args &&...args)
       : impl_base(in_place, il, std::forward<Args>(args)...),
         ctor_base(detail::default_constructor_tag{}) {}
 
@@ -365,7 +365,7 @@ class expected
   template <
       class... Args,
       enable_if_t<std::is_constructible<E, Args &&...>::value> * = nullptr>
-  constexpr explicit expected(unexpect_t, Args &&... args)
+  constexpr explicit expected(unexpect_t, Args &&...args)
       : impl_base(unexpect, std::forward<Args>(args)...),
         ctor_base(detail::default_constructor_tag{}) {}
 
@@ -379,7 +379,7 @@ class expected
             enable_if_t<std::is_constructible<E, std::initializer_list<U> &,
                                               Args &&...>::value> * = nullptr>
   constexpr explicit expected(unexpect_t, std::initializer_list<U> il,
-                              Args &&... args)
+                              Args &&...args)
       : impl_base(unexpect, il, std::forward<Args>(args)...),
         ctor_base(detail::default_constructor_tag{}) {}
 
@@ -1144,7 +1144,7 @@ class expected
   template <class... Args,
             enable_if_t<std::is_nothrow_constructible<T, Args &&...>::value> * =
                 nullptr>
-  void emplace(Args &&... args) {
+  void emplace(Args &&...args) {
     if (has_value()) {
       val() = T(std::forward<Args>(args)...);
     } else {
@@ -1161,7 +1161,7 @@ class expected
   template <class... Args,
             enable_if_t<!std::is_nothrow_constructible<T, Args &&...>::value>
                 * = nullptr>
-  void emplace(Args &&... args) {
+  void emplace(Args &&...args) {
     if (has_value()) {
       val() = T(std::forward<Args>(args)...);
     } else {
@@ -1180,7 +1180,7 @@ class expected
   template <class U, class... Args,
             enable_if_t<std::is_nothrow_constructible<
                 T, std::initializer_list<U> &, Args &&...>::value> * = nullptr>
-  void emplace(std::initializer_list<U> il, Args &&... args) {
+  void emplace(std::initializer_list<U> il, Args &&...args) {
     if (has_value()) {
       T t(il, std::forward<Args>(args)...);
       val() = std::move(t);
@@ -1200,7 +1200,7 @@ class expected
   template <class U, class... Args,
             enable_if_t<!std::is_nothrow_constructible<
                 T, std::initializer_list<U> &, Args &&...>::value> * = nullptr>
-  void emplace(std::initializer_list<U> il, Args &&... args) {
+  void emplace(std::initializer_list<U> il, Args &&...args) {
     if (has_value()) {
       T t(il, std::forward<Args>(args)...);
       val() = std::move(t);
