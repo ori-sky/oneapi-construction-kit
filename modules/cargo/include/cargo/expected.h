@@ -669,8 +669,8 @@ class expected
   /// `invoke(std::forward<F>(f), value())` is returned.
   /// @retval If `has_value()` is false, the returned value is empty.
   template <class F>
-  CARGO_CXX14_CONSTEXPR auto and_then(F &&f) & -> decltype(
-      and_then_impl(*this, std::forward<F>(f))) {
+  CARGO_CXX14_CONSTEXPR auto and_then(
+      F &&f) & -> decltype(and_then_impl(*this, std::forward<F>(f))) {
     return and_then_impl(*this, std::forward<F>(f));
   }
 
@@ -688,8 +688,8 @@ class expected
   /// `invoke(std::forward<F>(f), value())` is returned.
   /// @retval If `has_value()` is false, the returned value is empty.
   template <class F>
-  CARGO_CXX14_CONSTEXPR auto and_then(F &&f) && -> decltype(
-      and_then_impl(std::move(*this), std::forward<F>(f))) {
+  CARGO_CXX14_CONSTEXPR auto and_then(F &&f) && -> decltype(and_then_impl(
+      std::move(*this), std::forward<F>(f))) {
     return and_then_impl(std::move(*this), std::forward<F>(f));
   }
 
@@ -707,8 +707,8 @@ class expected
   /// `invoke(std::forward<F>(f), value())` is returned.
   /// @retval If `has_value()` is false, the returned value is empty.
   template <class F>
-  constexpr auto and_then(F &&f) const & -> decltype(
-      and_then_impl(*this, std::forward<F>(f))) {
+  constexpr auto and_then(
+      F &&f) const & -> decltype(and_then_impl(*this, std::forward<F>(f))) {
     return and_then_impl(*this, std::forward<F>(f));
   }
 
@@ -727,8 +727,8 @@ class expected
   /// `invoke(std::forward<F>(f), value())` is returned.
   /// @retval If `has_value()` is false, the returned value is empty.
   template <class F>
-  constexpr auto and_then(F &&f) const && -> decltype(
-      and_then_impl(std::move(*this), std::forward<F>(f))) {
+  constexpr auto and_then(F &&f) const && -> decltype(and_then_impl(
+      std::move(*this), std::forward<F>(f))) {
     return and_then_impl(std::move(*this), std::forward<F>(f));
   }
 #endif
@@ -828,8 +828,8 @@ class expected
   /// returned.
   /// @retval If `has_value()` is false, the result is `*this`.
   template <class F>
-  CARGO_CXX14_CONSTEXPR auto map(F &&f) & -> decltype(
-      expected_map_impl(std::declval<expected &>(), std::declval<F &&>())) {
+  CARGO_CXX14_CONSTEXPR auto map(F &&f) & -> decltype(expected_map_impl(
+      std::declval<expected &>(), std::declval<F &&>())) {
     return expected_map_impl(*this, std::forward<F>(f));
   }
 
@@ -847,8 +847,8 @@ class expected
   /// returned.
   /// @retval If `has_value()` is false, the result is `*this`.
   template <class F>
-  CARGO_CXX14_CONSTEXPR auto map(F &&f) && -> decltype(
-      expected_map_impl(std::declval<expected &>(), std::declval<F &&>())) {
+  CARGO_CXX14_CONSTEXPR auto map(F &&f) && -> decltype(expected_map_impl(
+      std::declval<expected &>(), std::declval<F &&>())) {
     return expected_map_impl(std::move(*this), std::forward<F>(f));
   }
 
@@ -990,8 +990,8 @@ class expected
   /// `expected<T,U>` from
   /// `make_unexpected(invoke(std::forward<F>(f), value()))`.
   template <class F>
-  CARGO_CXX14_CONSTEXPR auto map_error(F &&f) & -> decltype(
-      map_error_impl(std::declval<expected &>(), std::declval<F &&>())) {
+  CARGO_CXX14_CONSTEXPR auto map_error(F &&f) & -> decltype(map_error_impl(
+      std::declval<expected &>(), std::declval<F &&>())) {
     return map_error_impl(*this, std::forward<F>(f));
   }
 
@@ -1010,8 +1010,8 @@ class expected
   /// `expected<T,U>` from
   /// `make_unexpected(invoke(std::forward<F>(f), value()))`.
   template <class F>
-  CARGO_CXX14_CONSTEXPR auto map_error(F &&f) && -> decltype(
-      map_error_impl(std::declval<expected &&>(), std::declval<F &&>())) {
+  CARGO_CXX14_CONSTEXPR auto map_error(F &&f) && -> decltype(map_error_impl(
+      std::declval<expected &&>(), std::declval<F &&>())) {
     return map_error_impl(std::move(*this), std::forward<F>(f));
   }
 
@@ -1030,8 +1030,8 @@ class expected
   /// `expected<T,U>` from
   /// `make_unexpected(invoke(std::forward<F>(f), value()))`.
   template <class F>
-  constexpr auto map_error(F &&f) const & -> decltype(
-      map_error_impl(std::declval<const expected &>(), std::declval<F &&>())) {
+  constexpr auto map_error(F &&f) const & -> decltype(map_error_impl(
+      std::declval<const expected &>(), std::declval<F &&>())) {
     return map_error_impl(*this, std::forward<F>(f));
   }
 
@@ -1051,8 +1051,8 @@ class expected
   /// `expected<T,U>` from
   /// `make_unexpected(invoke(std::forward<F>(f), value()))`.
   template <class F>
-  constexpr auto map_error(F &&f) const && -> decltype(
-      map_error_impl(std::declval<const expected &&>(), std::declval<F &&>())) {
+  constexpr auto map_error(F &&f) const && -> decltype(map_error_impl(
+      std::declval<const expected &&>(), std::declval<F &&>())) {
     return map_error_impl(std::move(*this), std::forward<F>(f));
   }
 #endif

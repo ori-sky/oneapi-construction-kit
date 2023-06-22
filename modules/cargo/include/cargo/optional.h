@@ -544,8 +544,8 @@ class optional : private detail::optional_move_assign_base<wrap_reference_t<T>>,
   /// @return Let `U` be the result of `std::invoke(std::forward<F>(f),
   /// value())`. Returns a `std::optional<U>`.
   template <class F>
-  CARGO_CXX14_CONSTEXPR auto map(F &&f) & -> decltype(
-      optional_map_impl(std::declval<optional &>(), std::declval<F &&>())) {
+  CARGO_CXX14_CONSTEXPR auto map(F &&f) & -> decltype(optional_map_impl(
+      std::declval<optional &>(), std::declval<F &&>())) {
     return optional_map_impl(*this, std::forward<F>(f));
   }
 
@@ -559,8 +559,8 @@ class optional : private detail::optional_move_assign_base<wrap_reference_t<T>>,
   /// @return Let `U` be the result of `std::invoke(std::forward<F>(f),
   /// std::move(value()))`. Returns a `std::optional<U>`.
   template <class F>
-  CARGO_CXX14_CONSTEXPR auto map(F &&f) && -> decltype(
-      optional_map_impl(std::declval<optional &&>(), std::declval<F &&>())) {
+  CARGO_CXX14_CONSTEXPR auto map(F &&f) && -> decltype(optional_map_impl(
+      std::declval<optional &&>(), std::declval<F &&>())) {
     return optional_map_impl(std::move(*this), std::forward<F>(f));
   }
 
