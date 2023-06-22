@@ -1416,7 +1416,7 @@ inline constexpr optional<T> make_optional(std::initializer_list<U> il,
 
 #ifdef CARGO_CXX17
 template <class T>
-optional(T)->optional<T>;
+optional(T) -> optional<T>;
 #endif
 
 /// @}

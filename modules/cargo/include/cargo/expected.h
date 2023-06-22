@@ -1217,8 +1217,8 @@ class expected
   void swap(expected &rhs) noexcept(
       std::is_nothrow_move_constructible<T>::value &&noexcept(
           swap(std::declval<T &>(), std::declval<T &>())) &&
-      std::is_nothrow_move_constructible<E>::value &&
-      noexcept(swap(std::declval<E &>(), std::declval<E &>()))) {
+      std::is_nothrow_move_constructible<E>::value &&noexcept(
+          swap(std::declval<E &>(), std::declval<E &>()))) {
     if (has_value() && rhs.has_value()) {
       using std::swap;
       swap(val(), rhs.val());
